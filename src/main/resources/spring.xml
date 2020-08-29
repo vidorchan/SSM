@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--扫描所有除了controller包的其他包-->
+    <context:component-scan base-package="com.vidor">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+
+<!--    &lt;!&ndash;引入外部属性资源文件&ndash;&gt;-->
+<!--    <context:property-placeholder location="classpath:db.properties"></context:property-placeholder>-->
+
+<!--    &lt;!&ndash;创建Druid数据源&ndash;&gt;-->
+<!--    <bean class="com.alibaba.druid.pool.DruidDataSource" id="dataSource">-->
+<!--        <property name="username" value="${mysql.username}"></property>-->
+<!--        <property name="password" value="${mysql.password}"></property>-->
+<!--        <property name="url"  value="${mysql.url}"></property>-->
+<!--        <property name="driverClassName" value="${mysql.driverClassName}"></property>-->
+<!--    </bean>-->
+
+<!--    &lt;!&ndash;声明式事&ndash;&gt;-->
+<!--    <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManager">-->
+<!--        <property name="dataSource" ref="dataSource"></property>-->
+<!--    </bean>-->
+
+<!--    &lt;!&ndash;基于驱动&ndash;&gt;-->
+<!--    <tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>-->
+
+
+<!--    &lt;!&ndash;用于声明事务切入的所有方法&ndash;&gt;-->
+<!--    <aop:config>-->
+<!--        <aop:pointcut id="transactionCut" expression="execution(* cn.tulingxueyuan.service.impl.*.*(..))"/>-->
+<!--    </aop:config>-->
+
+<!--    &lt;!&ndash;用来明确切点匹配到的方法哪些方法需要使用事务&ndash;&gt;-->
+<!--    <tx:advice id="advice" transaction-manager="transactionManager">-->
+<!--        <tx:attributes>-->
+<!--            &lt;!&ndash;可以使用通配符&ndash;&gt;-->
+<!--            <tx:method name="add*"/>-->
+<!--            <tx:method name="update*"/>-->
+<!--            <tx:method name="delete*"/>-->
+<!--            <tx:method name="get*" read-only="true" propagation="SUPPORTS"></tx:method>-->
+<!--            <tx:method name="query*" read-only="true"></tx:method>-->
+<!--        </tx:attributes>-->
+<!--    </tx:advice>-->
+
+<!--    &lt;!&ndash;SqlSessionFactory&ndash;&gt;-->
+<!--    <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">-->
+<!--        &lt;!&ndash; 指定spring中的数据源 &ndash;&gt;-->
+<!--        <property name="dataSource" ref="dataSource"></property>-->
+<!--        <property name="configLocation" value="classpath:mybatis-config.xml"></property>-->
+<!--        <property name="mapperLocations" value="classpath:cn/tulingxueyuan/mapper/*.xml"></property>-->
+<!--    </bean>-->
+
+<!--    &lt;!&ndash;将mapper接口交给spring管理&ndash;&gt;-->
+<!--    <mybatis:scan base-package="cn.tulingxueyuan.mapper"></mybatis:scan>-->
+
+</beans>
