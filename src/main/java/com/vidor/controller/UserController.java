@@ -1,6 +1,8 @@
 package com.vidor.controller;
 
 import com.vidor.entity.User;
+import com.vidor.entity.UserPrivileges;
+import com.vidor.service.IUserPrivilegesService;
 import com.vidor.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,9 @@ public class UserController {
 
     @Autowired
     private IUserService userService;
+
+    @Autowired
+    private IUserPrivilegesService userPrivilegesService;
 
     @RequestMapping("/hello")
     public String hello() {
@@ -31,5 +36,10 @@ public class UserController {
     public List<User> getAllUsers() {
         List<User> users = userService.getAllUsers();
         return users;
+    }
+
+    @RequestMapping("getUserPrivileges")
+    public List<UserPrivileges> getAllUserPrivileges() {
+        return userPrivilegesService.getAllUserUserPrivileges();
     }
 }
