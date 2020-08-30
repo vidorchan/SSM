@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface IUserPrivilegesService {
     public List<UserPrivileges> getAllUserUserPrivileges();
+    public List<UserPrivileges> getUserPrivilegesByPage(int pageNum, int pageSize);
 }
