@@ -125,6 +125,12 @@
             <artifactId>pagehelper</artifactId>
             <version>5.2.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.4</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -155,6 +161,14 @@
                     <overwrite>true</overwrite>
                     <configurationFile>./generatorConfig.xml</configurationFile>
 <!--                    <configurationFile>src/main/resources/generatorConfig.xml</configurationFile>-->
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
                 </configuration>
             </plugin>
         </plugins>
