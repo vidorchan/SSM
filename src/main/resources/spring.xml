@@ -56,4 +56,7 @@
     <!--将mapper接口交给spring管理-->
     <mybatis:scan base-package="com.vidor.dao"></mybatis:scan>
 
+    <bean class="org.springframework.web.client.RestTemplate" id="restTemplate">
+    </bean>
+
 </beans>
