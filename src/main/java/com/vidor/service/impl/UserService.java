@@ -35,12 +35,12 @@ public class UserService implements IUserService, IUserPrivilegesService {
     }
 
     public List<UserPrivileges> getUserPrivilegesByPage(int pageNum, int pageSize) {
-        Page<Object> page = PageHelper.startPage(pageNum, pageSize);
-        List<UserPrivileges> list = userPrivilegesDao.selectAll();
+//        Page<Object> page = PageHelper.startPage(pageNum, pageSize);
+        List<UserPrivileges> list = userPrivilegesDao.selectByLimit(pageNum, pageSize);
         // 获取查询记录总数，必须位于从数据库查询数据的语句之后，否则不生效
-        long total = page.getTotal();
-        logger.debug("总共条数: " + total);
-        System.out.println("总共条数: " + total);
+//        long total = page.getTotal();
+//        logger.debug("总共条数: " + total);
+//        System.out.println("总共条数: " + total);
         return list;
     }
 }

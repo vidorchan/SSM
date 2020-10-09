@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vidor.dao.UserPrivilegesDao">
+  <resultMap id="BaseResultMap" type="com.vidor.entity.UserPrivileges">
+    <result column="GRANTEE" jdbcType="VARCHAR" property="grantee" />
+    <result column="TABLE_CATALOG" jdbcType="VARCHAR" property="tableCatalog" />
+    <result column="PRIVILEGE_TYPE" jdbcType="VARCHAR" property="privilegeType" />
+<!--    参数配置javaType和jdbcType或直接配置typeHandler属性-->
+    <result column="IS_GRANTABLE" jdbcType="VARCHAR" property="isGrantable"/> <!--    typeHandler="com.vidor.utils.BooleanTypeHandler"-->
+  </resultMap>
+  <insert id="insert" parameterType="com.vidor.entity.UserPrivileges">
+    insert into USER_PRIVILEGES (GRANTEE, TABLE_CATALOG, PRIVILEGE_TYPE, 
+      IS_GRANTABLE)
+    values (#{grantee,jdbcType=VARCHAR}, #{tableCatalog,jdbcType=VARCHAR}, #{privilegeType,jdbcType=VARCHAR}, 
+      #{isGrantable,jdbcType=VARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select GRANTEE, TABLE_CATALOG, PRIVILEGE_TYPE, IS_GRANTABLE
+    from USER_PRIVILEGES
+  </select>
+  <select id="selectByLimit" resultMap="BaseResultMap">
+    select GRANTEE, TABLE_CATALOG, PRIVILEGE_TYPE, IS_GRANTABLE
+    from USER_PRIVILEGES
+    limit #{pageNum}, #{pageSize}
+  </select>
+  <select id="selectByLimitCount" resultType="int">
+    select count(1)
+    from USER_PRIVILEGES
+  </select>
+</mapper>

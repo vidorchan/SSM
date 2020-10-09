@@ -14,16 +14,21 @@
         <package name="com.vidor.entity"/>
     </typeAliases>
 
+    <typeHandlers>
+        <typeHandler javaType="Boolean" jdbcType="CHAR" handler="com.vidor.utils.BooleanTypeHandler"/>
+    </typeHandlers>
+
     <!--
    插件：可以把它理解成mybatis的拦截器，可以拦截4大对象，可以拦截SQL 给SQL去加一些公共的功能-->
     <plugins>
-        <plugin interceptor="com.github.pagehelper.PageInterceptor">
-            <property name="helperDialect" value="mysql"/>
-            <property name="offsetAsPageNum" value="false"/>
-            <property name="rowBoundsWithCount" value="false"/>
-            <property name="pageSizeZero" value="true"/>
-            <property name="reasonable" value="true"/>
-        </plugin>
+<!--        <plugin interceptor="com.github.pagehelper.PageInterceptor">-->
+<!--            <property name="helperDialect" value="mysql"/>-->
+<!--            <property name="offsetAsPageNum" value="false"/>-->
+<!--            <property name="rowBoundsWithCount" value="false"/>-->
+<!--            <property name="pageSizeZero" value="true"/>-->
+<!--            <property name="reasonable" value="true"/>-->
+<!--        </plugin>-->
+        <plugin interceptor="com.vidor.interceptor.MyPageInterceptor"></plugin>
         <!--&lt;!&ndash;2 注册分页插件&ndash;&gt;
         <plugin interceptor="com.github.pagehelper.PageInterceptor">
             &lt;!&ndash;helperDialect （可省略）， 设置当前数据库的方言，默认会自动检查当前数据库环境实用的数据库&ndash;&gt;
@@ -43,6 +48,8 @@
             &lt;!&ndash;autoRuntimeDialect ： 如果程序使用了动态切换数据库的功能可以开启该参数true，默认是false&ndash;&gt;
         </plugin>-->
     </plugins>
+
+
 
     <!-- environments 可以多个环境：
 default 默认的数据库环境
