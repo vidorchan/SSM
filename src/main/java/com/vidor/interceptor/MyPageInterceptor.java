@@ -25,7 +25,7 @@ import java.util.List;
 })
 public class MyPageInterceptor implements Interceptor {
 
-    private final String countSuffix = "Count";
+    private static final String countSuffix = "Count";
 //    public Object intercept(Invocation invocation) throws Throwable {
 //        System.out.println("简易版的分页插件：逻辑分页改成物理分页");
 //        Object[] args = invocation.getArgs();
@@ -65,7 +65,7 @@ public class MyPageInterceptor implements Interceptor {
         Object[] args = invocation.getArgs();
         MappedStatement mappedStatement = (MappedStatement) args[0];
         Object parameterObject=args[1];
-        BoundSql boundSql = mappedStatement.getBoundSql(parameterObject);
+//        BoundSql boundSql = mappedStatement.getBoundSql(parameterObject);
         // 分页信息
         RowBounds rowBounds = (RowBounds) args[2];
 
